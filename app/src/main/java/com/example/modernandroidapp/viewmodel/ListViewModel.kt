@@ -24,5 +24,4 @@ class ListViewModel: ViewModel() {
         countries.value = mockData
     }
 
-
 }
