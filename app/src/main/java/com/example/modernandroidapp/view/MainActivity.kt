@@ -2,9 +2,9 @@ package com.example.modernandroidapp.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
-import android.widget.ListView
-import androidx.activity.viewModels
+import android.widget.TextView
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -28,20 +28,23 @@ class MainActivity : AppCompatActivity() {
             adapter = countriesAdapter
         }
         observeViewModel()
-        setContentView(R.layout.activity_main)
+        setContentView(binding.root)
     }
 
-    fun observeViewModel() {
+    private fun observeViewModel() {
         viewModel.countries.observe(this, Observer { countries ->
             countries?.let {
+                binding.countriesList.visibility = View.VISIBLE
                 countriesAdapter.updateCountries(it)
             }
         })
         viewModel.countryLoadError.observe(this, Observer { isError ->
-            isError?.let { binding.listError.visibility = if(it) View.VISIBLE else View.GONE }
+            Log.v("Samuel", "country load error: $isError")
+            isError?.let {binding.listError.visibility = if(it) View.VISIBLE else View.GONE }
         })
         viewModel.loading.observe(this, Observer { isLoading ->
             isLoading?.let {
+                Log.v("Samuel", "loading: $isLoading")
                 binding.loadingView.visibility = if (it) View.VISIBLE else View.GONE
                 if (it) {
                     binding.listError.visibility = View.GONE
