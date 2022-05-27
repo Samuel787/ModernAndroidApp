@@ -1,14 +1,13 @@
 package com.example.modernandroidapp.view
-
-import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.recyclerview.widget.RecyclerView
 import com.example.modernandroidapp.R
 import com.example.modernandroidapp.model.Country
 
-class CountryListAdapter(var countries: ArrayList<Country>): RecyclerView.Adapter<CountryListAdapter.CountryViewHolder>() {
+class CountryListAdapter(var countries: ArrayList<Country>):  RecyclerView.Adapter<CountryListAdapter.CountryViewHolder>() {
 
     class CountryViewHolder(view: View): RecyclerView.ViewHolder(view) {
         private val countryName = view.findViewById<TextView>(R.id.name)
