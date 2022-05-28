@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    compileSdkVersion 30
+    compileSdkVersion 31
 
     defaultConfig {
         applicationId "com.example.modernandroidapp"
@@ -69,9 +69,11 @@ dependencies {
     implementation "android.arch.lifecycle:extensions:$lifeCycleExtensionsVersion"
     implementation "androidx.fragment:fragment-ktx:1.2.4"
     testImplementation("org.mockito:mockito-inline:$mockitoVersion")
+    implementation "net.bytebuddy:byte-buddy:1.7.4"
     implementation 'com.android.support:multidex:1.0.3'
     testImplementation 'junit:junit:4.+'
-    implementation 'androidx.fragment:fragment:1.2.4'
+    androidTestImplementation "androidx.arch.core:core-testing:2.1.0"
+    implementation 'androidx.fragment:fragment:1.4.1'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 }

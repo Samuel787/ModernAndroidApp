@@ -26,7 +26,6 @@ class ListViewModel: ViewModel() {
         DaggerServiceComponent.create().inject(this)
     }
     fun refresh() {
-        Log.v("samuel", "Inside refresh method")
         fetchCountries()
     }
 
@@ -38,14 +37,12 @@ class ListViewModel: ViewModel() {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeWith(object: DisposableSingleObserver<List<Country>>() {
                     override fun onSuccess(value: List<Country>?) {
-                        Log.v("Samuel", "Successfully fetched all the countries")
                         countries.value = value
                         countryLoadError.value = false
                         loading.value = false
                     }
 
                     override fun onError(e: Throwable?) {
-                        Log.v("Samuel", "There is an error fetching json")
                         countryLoadError.value = true
                         loading.value = false
                     }
